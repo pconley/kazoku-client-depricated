@@ -15,18 +15,19 @@ import { HomeModule } from "./modules/home/home.module";
 
 import { MemberModule } from "./members/member.module";
 
-//import { MemberFilterPipe } from "./members/member-filter.pipe";
+import { MemberService } from "./members/member.service"
 
 @NgModule({
     imports: [
         BrowserModule,
         HttpModule,
         NgSemanticModule,
-        ContactModule, MemberModule, //FormsModule,
+        ContactModule, MemberModule,
         HomeModule,
         routing
     ],
     providers: [
+        MemberService,
         provideAuth({
             globalHeaders: [{"Content-type": "application/json"}],
             newJwtError: true,

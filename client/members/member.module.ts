@@ -4,14 +4,15 @@ import { NgSemanticModule } from "ng-semantic";
 import { CommonModule } from "@angular/common";
 
 import { MemberListComponent } from "./member-list.component";
+import { StarComponent } from "../shared/star.component";
 import { routing } from "./member.routing";
 
+// the turorial showed this in the app component, but
+// i could only get ngModel to work after puttting here
+// note that it is also imported below
 import { FormsModule } from '@angular/forms';
 
 import { MemberFilterPipe } from "./member-filter.pipe";
-
-//import { SharedModule } from "./shared/shared.module";
-//import { ContactModule } from "../contact/contact.module";
 
 @NgModule({
     imports: [
@@ -22,7 +23,7 @@ import { MemberFilterPipe } from "./member-filter.pipe";
         //ContactModule,
         NgSemanticModule
     ],
-    declarations: [ MemberListComponent, MemberFilterPipe ],
+    declarations: [ MemberListComponent, MemberFilterPipe, StarComponent ],
     bootstrap:    [ MemberListComponent ]
 })
 export class MemberModule { }

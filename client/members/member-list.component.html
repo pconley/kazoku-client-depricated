@@ -48,7 +48,9 @@
                         <td>{{ member.productCode | lowercase }}</td>
                         <td>{{ member.releaseDate }}</td>
                         <td>{{ member.price | currency:'USD':true:'1.2-2' }}</td>
-                        <td>stars here </td>
+                        <td><kz-star [rating]='member.starRating'
+                                (ratingClicked)='onRatingClicked($event)'></kz-star>
+                        </td>
                     </tr>
   </tbody>
   </table>

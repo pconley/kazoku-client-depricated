@@ -4,4 +4,5 @@ export interface IMember {
     memberCode: string;
     firstName: string;
     lastName: string;
+    starRating: number;
 }

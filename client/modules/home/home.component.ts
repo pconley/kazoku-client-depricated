@@ -12,6 +12,7 @@ export class HomeComponent {
     constructor(private apiService: ApiService) {}
 
     protected() {
+        console.log("HomeComponent#protected");
         this.apiService
             .get("/api")
             .subscribe(

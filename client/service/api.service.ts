@@ -8,6 +8,7 @@ export class ApiService {
     constructor(private authHttp: AuthHttp) {}
 
     get(url: string) {
+        console.log("ApiService#get url="+url);
         return this
             .authHttp
             .get(url)

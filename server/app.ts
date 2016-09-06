@@ -20,6 +20,7 @@ app.use(urlencoded({ extended: true }));
 app.use("/api", protectedRouter);
 app.use("/login", loginRouter);
 
+app.use('/data', express.static(join(__dirname, '../data')));
 app.use('/client', express.static(join(__dirname, '../client')));
 
 // error handlers
