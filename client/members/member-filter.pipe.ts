@@ -7,8 +7,23 @@ import { IMember } from './member';
 export class MemberFilterPipe implements PipeTransform {
 
     transform(value: IMember[], args: string[]): IMember[] {
-        let filter: string = args[0] ? args[0].toLocaleLowerCase() : null;
-        return filter ? value.filter((member: IMember) =>
-            member.memberName.toLocaleLowerCase().indexOf(filter) !== -1) : value;
+
+        // WIERD... the args are not as advertised in the tutorial
+        // that said args[0] would be the frst string; but each char
+        // is coming over as a separate string
+
+        //console.log(args);
+        if( !args ) return value; // no filter
+        if( !args[0] ) return value; // no filter
+        let str: string = args[0];
+        // join was not found here?????
+        for (var i = 1; i < args.length; i++) {
+            str += args[i];
+        }
+        let filter: string = str.toLocaleLowerCase();
+        //console.log("memberFilter: "+filter);
+        let result = value.filter((member: IMember) =>
+            member.memberName.toLocaleLowerCase().indexOf(filter) !== -1);
+        return result;
     }
 }

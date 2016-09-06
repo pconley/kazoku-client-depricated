@@ -17,7 +17,7 @@ export class MemberListComponent implements OnInit {
     imageWidth: number = 30;
     imageMargin: number = 2;
     showImage: boolean = false;
-    listFilter: string = 'cart';
+    listFilter: string = "cart";
 
 
     members: any = [

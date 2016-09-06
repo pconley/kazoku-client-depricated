@@ -37,7 +37,7 @@
   </thead>
 
   <tbody>
-                    <tr *ngFor='let member of members | memberFilter:listFilter'>
+                    <tr *ngFor='let member of members | memberFilter:listFilter :3'>
                         <td>
                             <img *ngIf='showImage' [src]='member.imageUrl'
                                  [title]='member.memberName | uppercase'
