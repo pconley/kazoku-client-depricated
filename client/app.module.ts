@@ -1,4 +1,7 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+
+//import { FormsModule } from '@angular/forms';
+
 import { BrowserModule } from '@angular/platform-browser';
 import { provideAuth } from "angular2-jwt";
 import { HttpModule } from "@angular/http";
@@ -12,12 +15,14 @@ import { HomeModule } from "./modules/home/home.module";
 
 import { MemberModule } from "./members/member.module";
 
+//import { MemberFilterPipe } from "./members/member-filter.pipe";
+
 @NgModule({
     imports: [
         BrowserModule,
         HttpModule,
         NgSemanticModule,
-        ContactModule, MemberModule,
+        ContactModule, MemberModule, //FormsModule,
         HomeModule,
         routing
     ],

@@ -1,11 +1,15 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { ApiService } from "../service/api.service";
+import { FormsModule } from '@angular/forms';
+//import { MemberFilterPipe } from './member-filter.pipe';
 
 @Component({
     selector: "kz-members",
-    templateUrl: "client/members/member-list.component.html"
+    templateUrl: "client/members/member-list.component.html",
+    styleUrls: [ "client/members/member-list.component.css" ],
+    //pipes: [ MemberFilterPipe ]
 })
-export class MemberListComponent {
+export class MemberListComponent implements OnInit {
     pageTitle: string = "Member List";
     error: string;
     response: {};
@@ -19,7 +23,7 @@ export class MemberListComponent {
     members: any = [
     {
         "productId": 1,
-        "productName": "Leaf Rake",
+        "memberName": "Leaf Rake",
         "productCode": "GDN-0011",
         "releaseDate": "March 19, 2016",
         "description": "Leaf rake with 48-inch wooden handle.",
@@ -29,7 +33,7 @@ export class MemberListComponent {
     },
     {
         "productId": 2,
-        "productName": "Garden Cart",
+        "memberName": "Garden Cart",
         "productCode": "GDN-0023",
         "releaseDate": "March 18, 2016",
         "description": "15 gallon capacity rolling garden cart",
@@ -39,7 +43,7 @@ export class MemberListComponent {
     },
     {
         "productId": 5,
-        "productName": "Hammer",
+        "memberName": "Hammer",
         "productCode": "TBX-0048",
         "releaseDate": "May 21, 2016",
         "description": "Curved claw steel hammer",
@@ -49,7 +53,7 @@ export class MemberListComponent {
     },
     {
         "productId": 8,
-        "productName": "Saw",
+        "memberName": "Saw",
         "productCode": "TBX-0022",
         "releaseDate": "May 15, 2016",
         "description": "15-inch steel blade hand saw",
@@ -59,7 +63,7 @@ export class MemberListComponent {
     },
     {
         "productId": 10,
-        "productName": "Video Game Controller",
+        "memberName": "Video Game Controller",
         "productCode": "GMG-0042",
         "releaseDate": "October 15, 2015",
         "description": "Standard two-button video game controller",
@@ -70,6 +74,10 @@ export class MemberListComponent {
     ];
 
     constructor(private apiService: ApiService) {}
+
+    ngOnInit(){
+        console.log("member-list#OnInit");
+    }
 
     protected() {
         this.apiService
