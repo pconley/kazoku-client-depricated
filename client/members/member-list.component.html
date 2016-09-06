@@ -1,0 +1,58 @@
+<h1 class="ui header">{{pageTitle}}</h1>
+
+<div class="ui container">
+<sm-segment class="raised">
+ 
+    <!-- the filter -->
+    <div class="ui grid">
+        <div class="four wide column">
+            <div>Filter by:</div>
+            <div><input type='text' /></div>
+        </div>
+        <div class="twelve wide column">
+            <div *ngIf='listFilter'>
+                <div><h3>Filtered by: {{listFilter}} </h3></div>
+            </div>
+        </div>
+    </div>
+
+    <div class='has-error' *ngIf='errorMessage'>{{errorMessage}}</div>
+ 
+  <table class="ui celled striped table"
+    *ngIf="members && members.length" >
+  <thead>
+                    <tr>
+                        <th>
+                            <button class='btn btn-primary' (click)='toggleImage()'>
+                                {{showImage ? 'Hide' : 'Show'}} Image
+                            </button>
+                        </th>
+                        <th>Product</th>
+                        <th>Code</th>
+                        <th>Available</th>
+                        <th>Price</th>
+                        <th>5 Star Rating</th>
+                    </tr>
+
+  </thead>
+
+  <tbody>
+                    <tr *ngFor='let member of members'>
+                        <td>
+                            <img *ngIf='showImage' [src]='member.imageUrl'
+                                 [title]='member.productName | uppercase'
+                                 [style.width.px]='imageWidth' 
+                                 [style.margin.px]='imageMargin'>
+                        </td>
+                        <td> {{member.productName}} </td>
+                        <td>{{ member.productCode | lowercase }}</td>
+                        <td>{{ member.releaseDate }}</td>
+                        <td>{{ member.price | currency:'USD':true:'1.2-2' }}</td>
+                        <td>stars here </td>
+                    </tr>
+  </tbody>
+  </table>
+
+    
+</sm-segment>
+</div>

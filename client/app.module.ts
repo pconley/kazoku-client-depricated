@@ -10,12 +10,14 @@ import { HelloComponent } from "./components/shared/hello.component";
 import { ContactModule } from "./modules/contact/contact.module";
 import { HomeModule } from "./modules/home/home.module";
 
+import { MemberModule } from "./members/member.module";
+
 @NgModule({
     imports: [
         BrowserModule,
         HttpModule,
         NgSemanticModule,
-        ContactModule,
+        ContactModule, MemberModule,
         HomeModule,
         routing
     ],
