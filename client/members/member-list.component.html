@@ -27,10 +27,10 @@
                                 {{showImage ? 'Hide' : 'Show'}} Image
                             </button>
                         </th>
-                        <th>Product</th>
-                        <th>Code</th>
-                        <th>Available</th>
-                        <th>Price</th>
+                        <th>Last Name</th>
+                        <th>First Name</th>
+                        <th>Born</th>
+                        <th>Key</th>
                         <th>5 Star Rating</th>
                     </tr>
 
@@ -44,10 +44,10 @@
                                  [style.width.px]='imageWidth' 
                                  [style.margin.px]='imageMargin'>
                         </td>
-                        <td> {{member.memberName}} </td>
-                        <td>{{ member.productCode | lowercase }}</td>
-                        <td>{{ member.releaseDate }}</td>
-                        <td>{{ member.price | currency:'USD':true:'1.2-2' }}</td>
+                        <td> {{member.last_name}} </td>
+                        <td>{{ member.first_name | titleCase }}</td>
+                        <td>{{ member.birth_year > 0 ? member.birth_year : '' }}</td>
+                        <td>{{ member.key }}</td>
                         <td><kz-star [rating]='member.starRating'
                                 (ratingClicked)='onRatingClicked($event)'></kz-star>
                         </td>

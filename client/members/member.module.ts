@@ -13,6 +13,7 @@ import { routing } from "./member.routing";
 import { FormsModule } from '@angular/forms';
 
 import { MemberFilterPipe } from "./member-filter.pipe";
+import { TitleCasePipe } from "../pipes/titlecase.pipe";
 
 @NgModule({
     imports: [
@@ -23,7 +24,7 @@ import { MemberFilterPipe } from "./member-filter.pipe";
         //ContactModule,
         NgSemanticModule
     ],
-    declarations: [ MemberListComponent, MemberFilterPipe, StarComponent ],
+    declarations: [ MemberListComponent, MemberFilterPipe, TitleCasePipe, StarComponent ],
     bootstrap:    [ MemberListComponent ]
 })
 export class MemberModule { }

@@ -9,7 +9,8 @@ import { IMember } from './member';
 
 @Injectable()
 export class MemberService {
-    private _memberUrl = 'data/products.json';
+    private _xemberUrl = 'data/members.json';
+    private _memberUrl = 'https://kazoku-server-2016.herokuapp.com/members.json'
 
     constructor(private _http: Http) { }
 
