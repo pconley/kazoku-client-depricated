@@ -30,7 +30,7 @@
                         <th>Last Name</th>
                         <th>First Name</th>
                         <th>Born</th>
-                        <th>Key</th>
+                        <th>Place</th>
                         <th>5 Star Rating</th>
                     </tr>
 
@@ -47,7 +47,7 @@
                         <td> {{member.last_name}} </td>
                         <td>{{ member.first_name | titleCase }}</td>
                         <td>{{ member.birth_year > 0 ? member.birth_year : '' }}</td>
-                        <td>{{ member.key }}</td>
+                        <td>{{ member.birth_place }}</td>
                         <td><kz-star [rating]='member.starRating'
                                 (ratingClicked)='onRatingClicked($event)'></kz-star>
                         </td>

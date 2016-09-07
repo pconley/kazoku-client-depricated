@@ -1,8 +1,7 @@
 export interface IMember {
-    memberId: number;
-    memberName: string;
-    memberCode: string;
-    firstName: string;
-    lastName: string;
+    id: number;
+    first_name: string;
+    last_name: string;
+    key: string;
     starRating: number;
 }
