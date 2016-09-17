@@ -8,13 +8,15 @@ import { HttpModule } from "@angular/http";
 import { NgSemanticModule } from "ng-semantic";
 
 import { AppComponent }  from './app.component';
-import { routing } from "./routes";
+import { routing, APP_ROUTER_PROVIDERS } from "./routes";
 import { HelloComponent } from "./components/shared/hello.component";
 import { ContactModule } from "./modules/contact/contact.module";
-import { HomeModule } from "./modules/home/home.module";
+import { HomeModule }    from "./modules/home/home.module";
+import { ErrorModule }   from "./error/error.module";
+import { MemberModule }  from "./members/member.module";
+import { ProfileModule } from "./profile/profile.module";
 
-import { MemberModule } from "./members/member.module";
-
+//import { Auth } from "./service/auth.service"
 import { MemberService } from "./members/member.service"
 
 @NgModule({
@@ -22,12 +24,14 @@ import { MemberService } from "./members/member.service"
         BrowserModule,
         HttpModule,
         NgSemanticModule,
-        ContactModule, MemberModule,
+        ContactModule, MemberModule, ErrorModule, ProfileModule,
         HomeModule,
         routing
     ],
     providers: [
-        MemberService,
+        MemberService, 
+        APP_ROUTER_PROVIDERS,
+        //Auth,
         provideAuth({
             globalHeaders: [{"Content-type": "application/json"}],
             newJwtError: true,
@@ -40,4 +44,8 @@ import { MemberService } from "./members/member.service"
         CUSTOM_ELEMENTS_SCHEMA
     ]
 })
-export class AppModule { }
+export class AppModule { 
+
+      //constructor(public auth: Auth) {}
+
+}

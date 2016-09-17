@@ -5,12 +5,12 @@
         <a routerLink="contact" class="item">Contact Me</a>
         
         <nav class="menu right">
-            <a (click)="myPopup.show($event, {position: 'right center'})" *ngIf="!isLogged" class="item">Login</a>
-            <a (click)="logout()" *ngIf="isLogged" class="item inverted red">Logout</a>
+            <a (click)="auth.login()" *ngIf="!auth.authenticated()" class="item">Login1</a>
+            <a (click)="auth.logout()" *ngIf="auth.authenticated()" class="item inverted red">Logout2</a>
         </nav>
     </nav>
     
-    <sm-popup class="huge" #myPopup>
+    <sm-popup id='zzz' class="huge" #myPopup>
         <sm-card class="card basic">
             <card-title> Simple login </card-title>
             <card-subtitle>  </card-subtitle>
@@ -18,11 +18,18 @@
                 <p><b>Password</b>: angualr2express</p>
                 <p><b>Username</b>: john</p>
             </card-content>
-            <sm-button class="bottom attached fluid primary" *ngIf="!isLogged" (click)="login()">Login</sm-button>
-            <sm-button class="bottom attached fluid red" *ngIf="isLogged" (click)="logout()">Logout</sm-button>
+            
+            <!--<sm-button class="bottom attached fluid primary" *ngIf="!isLogged" (click)="login()">Login</sm-button>
+            <sm-button class="bottom attached fluid red" *ngIf="isLogged" (click)="logout()">Logout</sm-button>-->
+
+            <sm-button class="bottom attached fluid primary" 
+                (click)="auth.login()" *ngIf="!auth.authenticated()">Login2</sm-button>
+            <sm-button class="bottom attached fluid red" 
+                (click)="auth.logout()" *ngIf="auth.authenticated()">Logout2</sm-button>
+
         </sm-card>
     </sm-popup>
-        
+
     <!--<hello [name]="appName"></hello>
     <div class="ui divider"></div>-->
     

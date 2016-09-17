@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { ApiService } from "../service/api.service";
 import { MemberService } from "./member.service";
-import { IMember } from "./member.ts"
+import { IMember } from "./member"
 //import { FormsModule } from '@angular/forms';
 //import { StarComponent } from '../shared/star.component';
 
@@ -14,6 +14,7 @@ import { IMember } from "./member.ts"
 export class MemberListComponent implements OnInit {
     pageTitle: string = "Member List";
     error: string;
+    loading: boolean = false;
     response: {};
 
     imageWidth: number = 30;
@@ -28,11 +29,11 @@ export class MemberListComponent implements OnInit {
     ngOnInit(){
         console.log("member-list#OnInit");
         //this.members = this.memberService.getMembers();
-
+        this.loading = true;
         this.memberService.getMembers()
             .subscribe(
-                members => this.members = members,
-                error =>  this.error = <any>error
+                members => { this.members = members; this.loading = false; },
+                error   => { this.error = <any>error; this.loading = false; }
             );
     }
 

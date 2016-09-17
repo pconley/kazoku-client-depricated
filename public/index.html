@@ -4,8 +4,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <base href=".">
 
-            <link rel="stylesheet" type="text/css" href="assets/css/semantic.min.css">
+
+        <link rel="stylesheet" type="text/css" href="assets/css/semantic.min.css">
         <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+        <!-- Auth0 Lock script -->
+        <script src="http://cdn.auth0.com/js/lock/10.2.2/lock.min.js"></script>
 
         <!-- IE required polyfills, in this exact order -->
         <!-- Polyfill(s) for older browsers -->
@@ -17,11 +21,11 @@
         <script src="assets/js/vendor/semantic.min.js"></script>
 
         <!-- 2. Configure SystemJS -->
-        <!-- Development mod 
+        <!-- Development mod -->
         <script src="systemjs.config.js"></script>
         <script>
             System.import('app').catch(function(err) { console.error(err); });
-        </script> -->
+        </script> 
     </head>
 
     <body>
@@ -31,6 +35,6 @@
             </div>
         </app>
         <!--  Production mod  -->
-        <script src="assets/js/bundle.min.js"></script>
+        <!--<script src="assets/js/bundle.min.js"></script>-->
     </body>
 </html>

@@ -3,9 +3,12 @@ import { Http, Headers, RequestOptions, Response } from "@angular/http";
 import { SemanticPopupComponent } from "ng-semantic";
 import "rxjs/add/operator/map";
 
+import { Auth } from './service/auth.service';
+
 @Component({
     selector: "app",
-    templateUrl: "client/app.component.html"
+    templateUrl: "client/app.component.html",
+    providers: [Auth]
 })
 export class AppComponent {
     appName: string = "Angular 2 Express";
@@ -17,7 +20,7 @@ export class AppComponent {
     isLogged: boolean;
     @ViewChild("myPopup") myPopup: SemanticPopupComponent;
 
-    constructor(private http: Http) {
+    constructor(private http: Http, private auth: Auth) {
         this.isLogged = !!localStorage.getItem("id_token");
     }
 

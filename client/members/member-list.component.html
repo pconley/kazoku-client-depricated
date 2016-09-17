@@ -17,6 +17,8 @@
     </div>
 
     <div class='has-error' *ngIf='errorMessage'>{{errorMessage}}</div>
+
+    <div *ngIf='loading'><br>Loading...</div>
  
   <table class="ui celled striped table"
     *ngIf="members && members.length" >
