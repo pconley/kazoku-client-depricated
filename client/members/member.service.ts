@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
+import { AuthHttp } from "angular2-jwt";
+
 
 import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/do';
+import 'rxjs/add/operator/do'
 import 'rxjs/add/observable/of';
 import 'rxjs/add/observable/from';
 import 'rxjs/add/operator/catch';
@@ -17,7 +19,7 @@ export class MemberService {
 
     public _prevData: IMember[] = null;
 
-    constructor(private _http: Http) { }
+    constructor(private _http: Http, private _auth: AuthHttp) { }
 
     getMembers(): Observable<IMember[]> {
         if( this._prevData ){
@@ -25,7 +27,7 @@ export class MemberService {
             return Observable.of(this._prevData);
         }
         console.log("MemberService#getMembers")
-        return this._http.get(this._memberUrl)
+        return this._auth.get(this._memberUrl)
             .map((response: Response) => <IMember[]> response.json())
             //.do(data => console.log('All: ' +  JSON.stringify(data)))
             .do(data => {

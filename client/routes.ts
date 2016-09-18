@@ -3,14 +3,6 @@ import { ProfileComponent } from "./profile/profile.component"
 
 export const routes: Routes = [
     { path: '',  redirectTo: 'home', pathMatch: 'full' },
-    // { path: 'accexx_token',
-    //     component: ProfileComponent,
-    //     data: {
-    //       menu: {
-    //         hidden: true
-    //       }
-    //     }
-    // },
     { path: "access_token", redirectTo: 'profile' },
     { path: "**", redirectTo: 'error' }
 ];

@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { tokenNotExpired } from 'angular2-jwt';
 
@@ -14,10 +15,10 @@ export class AuthService {
   // Configure Auth0 
   lock = new Auth0Lock('6VtNWmSNXVxLDCxiDQaE6xGbBAbs4Nkk', 'kazoku.auth0.com', {});
 
-  //Store profile object in auth class
+  // to store profile object in auth class
   userProfile: Object;
 
-  constructor() {
+  constructor(private router: Router) {
 
     console.log('auth.service#constructor...',location.href);
 
@@ -64,7 +65,6 @@ export class AuthService {
     // This searches for an item in localStorage with key == 'id_token'
     var x = tokenNotExpired();
     //console.log('authenticated? '+x);
-
     return x;
   };
 
@@ -72,5 +72,6 @@ export class AuthService {
     console.log('logout');
     // Remove token from localStorage
     localStorage.removeItem('id_token');
+    this.router.navigate(['']);
   };
 }

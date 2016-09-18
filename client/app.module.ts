@@ -1,7 +1,5 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
-//import { FormsModule } from '@angular/forms';
-
 import { BrowserModule } from '@angular/platform-browser';
 import { provideAuth } from "angular2-jwt";
 import { HttpModule } from "@angular/http";
@@ -33,7 +31,6 @@ import { AuthService } from "./service/auth.service"
         MemberService, AuthService,
         CanActivateViaAuthGuard,
         APP_ROUTER_PROVIDERS,
-        //Auth,
         provideAuth({
             globalHeaders: [{"Content-type": "application/json"}],
             newJwtError: true,
