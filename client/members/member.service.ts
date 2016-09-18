@@ -6,6 +6,7 @@ import 'rxjs/add/operator/do';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/observable/from';
 import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/map';
 
 import { IMember } from './member';
 

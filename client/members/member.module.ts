@@ -14,6 +14,7 @@ import { FormsModule } from '@angular/forms';
 
 import { MemberFilterPipe } from "./member-filter.pipe";
 import { TitleCasePipe } from "../pipes/titlecase.pipe";
+import { CanActivateViaAuthGuard } from '../service/auth.guard'
 
 @NgModule({
     imports: [
@@ -23,6 +24,10 @@ import { TitleCasePipe } from "../pipes/titlecase.pipe";
         //SharedModule.forRoot(),
         //ContactModule,
         NgSemanticModule
+    ],
+    providers: [ CanActivateViaAuthGuard
+    //     //{ provide: 'AuthGuard', useValue: () => { return false; } }
+    //     { provide: '',}
     ],
     declarations: [ MemberListComponent, MemberFilterPipe, TitleCasePipe, StarComponent ],
     bootstrap:    [ MemberListComponent ]

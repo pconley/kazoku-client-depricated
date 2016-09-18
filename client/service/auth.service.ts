@@ -9,7 +9,7 @@ declare var Auth0Lock: any; // Avoid name not found warnings
 // var AUTH0_CALLBACK_URL=location.href;
 
 @Injectable()
-export class Auth {
+export class AuthService {
 
   // Configure Auth0 
   lock = new Auth0Lock('6VtNWmSNXVxLDCxiDQaE6xGbBAbs4Nkk', 'kazoku.auth0.com', {});
