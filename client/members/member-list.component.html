@@ -2,12 +2,18 @@
 
 <div class="ui container">
 <sm-segment class="raised">
+
+    <h3>Values</h3>
+    <div>Status: {{ status }}</div>
+    <span *ngFor="let value of values"> {{ value }} </span>
+
  
     <!-- the filter -->
     <div class="ui grid">
         <div class="four wide column">
             <div>Filter by:</div>
-            <div><input type='text'  [(ngModel)]='listFilter' /></div>
+            <div><input type='text' [(ngModel)]='listFilter' /></div>
+            <button class='btn btn-primary' (click)='refresh()'>Refresh</button>
         </div>
         <div class="twelve wide column">
             <div *ngIf='listFilter' >

@@ -28,8 +28,8 @@ export class AuthService {
     // #access_token=SG90NTdx8UsxQqW9&id_token=QF1objpQm6E&token_type=Bearer
     var regex = new RegExp("#access_token=(.*)&id_token=(.*)&token_type=Bearer", "g");
     var parts = regex.exec(parser.hash);
+    console.log("auth parts...",parts);
     if( parts && parts[2] ){
-      //console.log("parts...",parts);
 
       // DO THE ACTION THAT WAS MEANT TO HAPPEN IN THE AUTHENTICATED
 
@@ -41,7 +41,7 @@ export class AuthService {
         if (error) { alert(error); return; }
 
         localStorage.setItem('profile', JSON.stringify(profile));
-        //console.log("profile...",profile);
+        console.log("auth profile...",profile);
         this.userProfile = profile;
       });
     }
@@ -63,9 +63,9 @@ export class AuthService {
   public authenticated() {
     // Check if there's an unexpired JWT
     // This searches for an item in localStorage with key == 'id_token'
-    var x = tokenNotExpired();
-    //console.log('authenticated? '+x);
-    return x;
+    var hasValidToken = tokenNotExpired();
+    console.log('authenticated? '+hasValidToken);
+    return hasValidToken;
   };
 
   public logout() {
