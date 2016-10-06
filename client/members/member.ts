@@ -4,4 +4,5 @@ export interface IMember {
     last_name: string;
     key: string;
     starRating: number;
+    selected: boolean;
 }
