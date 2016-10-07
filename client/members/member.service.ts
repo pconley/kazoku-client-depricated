@@ -31,10 +31,10 @@ export class MemberService {
         return this.loadPages();
     }
 
-    // getMember(id: number): Observable<IMember> {
-    //     return this.getMembers()
-    //         .map((members: IMember[]) => members.find(p => p.id === id));
-    // }
+    getMember(id: number): Observable<IMember> {
+        return this.getMembers(false)
+            .map((members: IMember[]) => members.find(p => p.id === id));
+    }
 
     loadPages(): Observable<IMember[]> {
         var page = 0;
