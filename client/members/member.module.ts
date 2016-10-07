@@ -2,10 +2,13 @@ import { NgModule } from '@angular/core';
 import { HttpModule } from "@angular/http";
 import { NgSemanticModule } from "ng-semantic";
 import { CommonModule } from "@angular/common";
+import { RouterModule } from '@angular/router';
 
+import { MemberRoutingModule } from './member.routing';
 import { MemberListComponent } from "./member-list.component";
+import { MemberDetailsComponent } from "./member-details.component";
+
 import { StarComponent } from "../shared/star.component";
-import { routing } from "./member.routing";
 
 // the turorial showed this in the app component, but
 // i could only get ngModel to work after puttting here
@@ -20,16 +23,18 @@ import { CanActivateViaAuthGuard } from '../service/auth.guard'
     imports: [
         CommonModule, FormsModule,
         HttpModule,
-        routing,
         //SharedModule.forRoot(),
         //ContactModule,
-        NgSemanticModule
+        NgSemanticModule,
+        MemberRoutingModule
+     ],
+    providers: [ CanActivateViaAuthGuard ],
+    declarations: [ 
+        MemberListComponent, MemberDetailsComponent, 
+        MemberFilterPipe, TitleCasePipe, 
+        StarComponent 
     ],
-    providers: [ CanActivateViaAuthGuard
-    //     //{ provide: 'AuthGuard', useValue: () => { return false; } }
-    //     { provide: '',}
-    ],
-    declarations: [ MemberListComponent, MemberFilterPipe, TitleCasePipe, StarComponent ],
-    bootstrap:    [ MemberListComponent ]
+    bootstrap: [ MemberListComponent ]
 })
+
 export class MemberModule { }

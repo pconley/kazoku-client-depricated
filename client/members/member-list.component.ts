@@ -1,5 +1,8 @@
 import { Component, OnInit } from "@angular/core";
+import { Router } from '@angular/router';
+
 //import { ApiService } from "../service/api.service";
+//import { MemberRoutingModule } from "./member.routing";
 import { MemberService } from "./member.service";
 import { IMember } from "./member"
 //import { Observable } from 'rxjs/Observable';
@@ -23,7 +26,7 @@ export class MemberListComponent implements OnInit {
     loading: boolean = false;
     members: IMember[] = [];
 
-    constructor(private memberService: MemberService) {}
+    constructor(private router: Router, private memberService: MemberService) {}
 
     ngOnInit(){ this.loader(false); }
 
@@ -37,6 +40,8 @@ export class MemberListComponent implements OnInit {
             if( this.previousMember ) this.previousMember.selected = false;
         }
         this.previousMember = member;
+
+        this.router.navigate(['/member', member.id]);
     }
 
     refresh(){ this.loader(true); }
