@@ -74,4 +74,5 @@ export class AuthService {
     localStorage.removeItem('id_token');
     this.router.navigate(['']);
   };
+
 }

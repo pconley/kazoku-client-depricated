@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { AuthService } from '../service/auth.service';
+import { Component, OnInit } from '@angular/core';
+import { ProfileService } from './profile.service';
 
 @Component({
   selector: 'kz-profile',
@@ -7,6 +7,12 @@ import { AuthService } from '../service/auth.service';
 })
 export class ProfileComponent {
 
-    constructor( private auth: AuthService ) {}
+    profile: any = null;
+
+    constructor( private service: ProfileService ) {}
+
+    ngOnInit() { 
+        this.profile = this.profile || this.service.load_profile();
+    }
 
 }

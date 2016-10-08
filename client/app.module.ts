@@ -15,8 +15,10 @@ import { MemberModule }  from "./members/member.module";
 import { ProfileModule } from "./profile/profile.module";
 
 import { CanActivateViaAuthGuard } from "./service/auth.guard"
-import { MemberService } from "./members/member.service"
+
 import { AuthService } from "./service/auth.service"
+import { MemberService } from "./members/member.service"
+import { ProfileService } from "./profile/profile.service"
 
 @NgModule({
     imports: [
@@ -28,7 +30,7 @@ import { AuthService } from "./service/auth.service"
         routing
     ],
     providers: [
-        MemberService, AuthService,
+        ProfileService, MemberService, AuthService,
         CanActivateViaAuthGuard,
         APP_ROUTER_PROVIDERS,
         provideAuth({
