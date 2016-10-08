@@ -20,19 +20,19 @@ export class AppComponent {
 
         // wake up the rails app on heroku even if the call fails
         // which will happen if not yet authentecated through auth0
-        console.log('wake up rails app!!')
-        var getter = summaryService.get(); 
-        getter.subscribe(
-            value => { 
-                console.log("*** value="+value); 
-            },
-            error => {
-                console.log("*** error raised.  msg = "+error);
-            },
-            () => { 
-                console.log("*** done");
-            }
-        );
+        // console.log('wake up rails app!!')
+        // var getter = summaryService.get(); 
+        // getter.subscribe(
+        //     value => { 
+        //         console.log("*** value="+value); 
+        //     },
+        //     error => {
+        //         console.log("*** error raised.  msg = "+error);
+        //     },
+        //     () => { 
+        //         console.log("*** done");
+        //     }
+        // );
 
     }
 }

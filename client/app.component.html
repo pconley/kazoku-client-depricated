@@ -2,9 +2,11 @@
     <nav class="ui menu inverted teal huge">
         <a routerLink="home" class="item">Kazoku</a>
         <a routerLink="members" class="item" *ngIf="auth.authenticated()">Members</a>
-        <a routerLink="contact" class="item">Contact Me</a>
+        <a routerLink="members" class="item" *ngIf="auth.authenticated()">Families</a>
         
         <nav class="menu right">
+            <a routerLink="contact" class="item">Contact Me</a>
+            <a routerLink="profile" class="item">Profile</a>
             <a (click)="auth.login()" *ngIf="!auth.authenticated()" class="item">Login</a>
             <a (click)="auth.logout()" *ngIf="auth.authenticated()" class="item inverted red">Logout</a>
         </nav>
