@@ -1,5 +1,5 @@
 <h4 *ngIf="!auth.authenticated()">You are not logged in, please click 'Log in' button to login</h4>
-<h4 *ngIf="auth.authenticated()">You are logged in.</h4>
+<h4 *ngIf="auth.authenticated()">You are logged in!</h4>
 <!--<p *ngIf="auth.authenticated()"><strong>Name: </strong> {{auth.userProfile.name}}</p>-->
 <div *ngIf="auth.authenticated() && auth.userProfile">
   <div class="row">

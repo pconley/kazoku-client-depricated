@@ -8,6 +8,8 @@ import { routing } from "./home.routing";
 import { SharedModule } from "../shared/shared.module";
 import { ContactModule } from "../contact/contact.module";
 
+import { ExampleComponent } from "../example/example.component";
+
 @NgModule({
     imports: [
         CommonModule,
@@ -18,7 +20,7 @@ import { ContactModule } from "../contact/contact.module";
         ContactModule
     ],
     declarations: [
-        HomeComponent
+        HomeComponent, ExampleComponent
     ],
     bootstrap: [
         HomeComponent
