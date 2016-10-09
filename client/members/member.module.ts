@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 
 import { MemberRoutingModule } from './member.routing';
 import { MemberListComponent } from "./member-list.component";
+import { MemberFormComponent } from "./member-form.component";
 import { MemberDetailsComponent } from "./member-details.component";
 
 import { StarComponent } from "../shared/star.component";
@@ -27,10 +28,10 @@ import { CanActivateViaAuthGuard } from '../service/auth.guard'
         //ContactModule,
         NgSemanticModule,
         MemberRoutingModule
-     ],
+    ],
     providers: [ CanActivateViaAuthGuard ],
     declarations: [ 
-        MemberListComponent, MemberDetailsComponent, 
+        MemberListComponent, MemberDetailsComponent, MemberFormComponent,
         MemberFilterPipe, TitleCasePipe, 
         StarComponent 
     ],

@@ -1,8 +1,8 @@
 <div class="ui container">
     <nav class="ui menu inverted teal huge">
         <a routerLink="home" class="item">Kazoku</a>
-        <a routerLink="members" class="item" *ngIf="auth.authenticated()">Members</a>
-        <a routerLink="members" class="item" *ngIf="auth.authenticated()">Families</a>
+        <a routerLink="members" class="item" *ngIf="auth.authenticated()"><i class="user icon"></i>Members</a>
+        <a routerLink="members" class="item" *ngIf="auth.authenticated()"><i class="users icon"></i>Families</a>
         
         <nav class="menu right">
             <a routerLink="contact" class="item">Contact Me</a>

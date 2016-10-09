@@ -5,4 +5,5 @@ export interface IMember {
     key: string;
     starRating: number;
     selected: boolean;
+    description: string;
 }
