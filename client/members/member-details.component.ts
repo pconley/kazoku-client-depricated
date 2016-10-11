@@ -15,8 +15,11 @@ export class MemberDetailsComponent implements OnInit {
     active: boolean = true;
     submitted: boolean = true;
     current_id: number = 0;
-    saved: IMember = null;
-    member: IMember = null;
+    saved_json: string = "";
+    is_dirty: boolean = false;
+    member: IMember = {id:0, first_name:'error',last_name:'error',key:'',starRating:0,selected:false,description:''};
+
+    in_init: boolean = false;
 
     constructor(
         private route: ActivatedRoute,
@@ -24,36 +27,37 @@ export class MemberDetailsComponent implements OnInit {
         private service: MemberService) {}
 
     ngOnInit() {
-        // (+) converts string 'id' to a number
-        var that = this;
-        this.current_id = +this.route.snapshot.params['id'];
-        console.log("MemberDetailsComponent#onInit: id = "+this.current_id);
-        this.service.getMembers(false)
-            .subscribe(
-                (data) => { 
-                    console.log("*** loading. records = "+data.length);
-                    var filtered = data.filter(function(x) { return x.id == that.current_id; });
-                    this.saved = this.member = filtered[0];
-                 },
-                (error: Error) => {
-                    console.log("*** error: "+error.message);
-                },
-                () => { 
-                    console.log("*** done");
-                }
-            );
+        console.log("MemberDetailsComponent#onInit: in init = "+this.in_init);
+
+        this.route.params
+        .map(params => params['id'])
+        .subscribe((id) => {
+            this.service
+            .getMember2(id)
+            .subscribe(m => this.member = m);
+        });
+    }
+
+    isDirty(){
+        console.log("MemberDetailsComponent#isDirty");
+        return JSON.stringify(this.member) === this.saved_json;
     }
 
     onCancel(the_form) { 
         console.log("MemberDetailsComponent#cancel");
-        this.member = this.saved;
+        this.member = JSON.parse(this.saved_json);
         this.submitted = true; 
+        this.is_dirty = false;
     }
 
     onSubmit(the_form) { 
         console.log("MemberDetailsComponent#submit: the form...",the_form);
+        this.saved_json = JSON.stringify(this.member);
+        this.is_dirty = false;
         this.submitted = true; 
     }
+
+
 
     // newMember() {
     //     this.member = { id:0, key: "",
@@ -65,6 +69,8 @@ export class MemberDetailsComponent implements OnInit {
     // }
 
     resetPristine(){
+        console.log("MemberDetailsComponent#resetPristine");
+
         // reseting the visibility of the form via the
         // active attribute (see html) will cause the
         // pristine attribute to reset, so first set active

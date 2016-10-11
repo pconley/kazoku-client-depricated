@@ -1,12 +1,13 @@
-<div>submited flag = {{submitted}}</div>
-<div>rails record id = {{member.id}}</div>
+<!--<div>submited flag = {{submitted}}</div>
+<div>dirty record = {{is_dirty}}</div>
+<div>rails record id = {{member.id}}</div>-->
 
 <form *ngIf="active" (ngSubmit)="onSubmit(theForm)" #theForm="ngForm" class="ui form">
 
-    <h4 class="ui horizontal divider header"><i class="user icon"></i>Description</h4>
-    <p  class="ui">{{member.description}}</p>
+    <!--<h4 class="ui horizontal divider header"><i class="user icon"></i>Description</h4>
+    <p  class="ui">{{member.description}}</p>-->
 
-    <h4 class="ui horizontal divider header"><i class="list layout icon"></i>Details</h4>
+    <h4 class="ui horizontal divider header"><i class="list layout icon"></i>Member Details</h4>
     <table class="ui definition table">
     <tbody>
     <tr id='lname_row'>
@@ -25,12 +26,38 @@
                 required name="last-name" id="last-name" 
                 [(ngModel)]="member.last_name" #lname="ngModel" >
             <span  *ngIf="submitted">{{member.last_name}}</span>
-
       </td>
+    </tr>
+    <tr id='year_row'>
+      <td>Born in</td>
+      <td>
+            <input type="text" *ngIf="!submitted"
+                required name="birth-yeare" id="birth-year" 
+                [(ngModel)]="member.birth_year" #lname="ngModel" >
+            <span  *ngIf="submitted">{{member.birth_year}}</span>
+      </td>
+    </tr>    
+    <tr id='place_row'>
+      <td>Born at</td>
+      <td>
+            <input type="text" *ngIf="!submitted"
+                required name="birth-place" id="birth-place" 
+                [(ngModel)]="member.birth_place" #lname="ngModel" >
+            <span  *ngIf="submitted">{{member.birth_place}}</span>
+      </td>
+
     </tr>
     <tr id='parent_row'>
       <td>Parents</td>
-      <td>mom and dad</td>
+      <td>
+          <span *ngIf="member.parents">
+            <a href="#" *ngIf="member.parents[0]" 
+                [routerLink]="['/member', member.parents[0].id]">{{member.parents[0].first_name}}</a>
+            <span *ngIf="(member.parents.length==2)"> & </span>
+            <a href="#" *ngIf="member.parents[1]"
+                [routerLink]="['/member', member.parents[1].id]">{{member.parents[1].first_name}}</a>
+          </span>
+      </td>
     </tr>
     <tr id='sibling_row'>
       <td>Siblings</td>

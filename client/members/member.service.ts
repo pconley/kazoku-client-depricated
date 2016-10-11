@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { AuthHttp } from "angular2-jwt";
 
-import { Observable } from 'rxjs/Observable';
+import {Observable} from 'rxjs/Rx';
+//import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/do'
 import 'rxjs/add/observable/of';
 import 'rxjs/add/observable/from';
@@ -14,6 +15,7 @@ import { IMember } from './member';
 @Injectable()
 export class MemberService {
 
+    private memberUrl = 'https://kazoku-server-2016.herokuapp.com/members/'
     private membersUrl = 'https://kazoku-server-2016.herokuapp.com/members.json'
 
     public membersCache: IMember[] = null;
@@ -31,9 +33,22 @@ export class MemberService {
         return this.loadPages();
     }
 
-    getMember(id: number): Observable<IMember> {
+    xetMember(id: number): Observable<IMember> {
         return this.getMembers(false)
             .map((members: IMember[]) => members.find(p => p.id === id));
+    }
+
+    getMember(id: number): IMember {
+        return this.membersCache.find(p => p.id === id);
+    }
+
+    getMember2(id: number): Observable<IMember> {
+        var url = `${this.memberUrl}${id}.json`;
+        console.log("MemberService#getMember2: url="+url);
+        return this._auth.get(url)
+            .map((response: Response) => <IMember> response.json())
+            .do(data => { console.log("MemberService#getMember2: data...",data); })
+            .catch(this.handleError);
     }
 
     loadPages(): Observable<IMember[]> {
@@ -46,7 +61,7 @@ export class MemberService {
                 that.loadPage(++page)
                     .subscribe(
                         members => { 
-                            console.log("refresh: page "+page+" loaded "+members.length); 
+                            console.log("loadPages: page "+page+" loaded "+members.length); 
                             // observers are shown loaded members
                             observer.next(members); 
                             // and we also accumulate a full copy in the cache
@@ -78,9 +93,7 @@ export class MemberService {
     }
 
     private handleError(error: Response) {
-        // in a real world app, we may send the server to some remote logging infrastructure
-        // instead of just logging it to the console
-        console.error("MemberService#handleError",error);
-        return Observable.throw(error.json().error || 'Server error');
+        console.error("MemberService#handleError: 3956...",error);
+        return Observable.throw('Server error: 3956');
     }
 }
