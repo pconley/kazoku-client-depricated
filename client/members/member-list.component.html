@@ -46,7 +46,7 @@
                         </td>
                         <td >{{ member.first_name}} {{member.last_name}} </td>
                         <td>{{ member.birth_year > 0 ? member.birth_year : '' }}</td>
-                        <td>{{ member.birth_place }}</td>
+                        <!--<td><kz-member-card></kz-member-card></td>-->
                         <td><kz-star [rating]='member.starRating'
                                 (ratingClicked)='onRatingClicked($event)'></kz-star>
                         </td>

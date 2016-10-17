@@ -59,14 +59,38 @@
           </span>
       </td>
     </tr>
+
+    <tr id='spouse_row'>
+      <td>Spouse(s)</td>
+      <td>
+        <span *ngFor='let spouse of member.spouses'>
+            <a href="#" [routerLink]="['/member', spouse.id]">{{spouse.first_name}} {{spouse.last_name}}</a>
+            ; &nbsp;
+        </span>
+      </td>
+    </tr>
+
     <tr id='sibling_row'>
       <td>Siblings</td>
-      <td>bro and sis</td>
+      <td>
+        <span *ngFor='let sib of member.siblings'>
+            <a href="#" [routerLink]="['/member', sib.id]">{{sib.first_name}}</a>
+            ; &nbsp;
+        </span>
+      </td>
     </tr>
+  
     <tr id='children_row'>
       <td>Children</td>
-      <td>junior</td>
+      <td>
+        <span *ngFor='let child of member.children'>
+            <a href="#" [routerLink]="['/member', child.id]">{{child.first_name}}</a>
+            ; &nbsp;
+        </span>
+      </td>
     </tr>
+
+  
     <tr id='description_row'> 
       <td>Description</td>
       <td>

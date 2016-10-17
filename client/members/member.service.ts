@@ -15,8 +15,10 @@ import { IMember } from './member';
 @Injectable()
 export class MemberService {
 
-    private memberUrl = 'https://kazoku-server-2016.herokuapp.com/members/'
-    private membersUrl = 'https://kazoku-server-2016.herokuapp.com/members.json'
+    private baseUrl = 'https://kazoku-server-2016.herokuapp.com/api/v1/';
+    //private baseUrl = 'http://localhost:3333/api/v1/';
+    private memberUrl = this.baseUrl+'members/'; // add 1.json
+    private membersUrl = this.baseUrl+'members.json';
 
     public membersCache: IMember[] = null;
 
@@ -33,16 +35,7 @@ export class MemberService {
         return this.loadPages();
     }
 
-    xetMember(id: number): Observable<IMember> {
-        return this.getMembers(false)
-            .map((members: IMember[]) => members.find(p => p.id === id));
-    }
-
-    getMember(id: number): IMember {
-        return this.membersCache.find(p => p.id === id);
-    }
-
-    getMember2(id: number): Observable<IMember> {
+    getMember(id: number): Observable<IMember> {
         var url = `${this.memberUrl}${id}.json`;
         console.log("MemberService#getMember2: url="+url);
         return this._auth.get(url)

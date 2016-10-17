@@ -30,12 +30,12 @@ export class MemberDetailsComponent implements OnInit {
         console.log("MemberDetailsComponent#onInit: in init = "+this.in_init);
 
         this.route.params
-        .map(params => params['id'])
-        .subscribe((id) => {
-            this.service
-            .getMember2(id)
-            .subscribe(m => this.member = m);
-        });
+            .map(params => params['id'])
+            .subscribe((id) => {
+                this.service
+                    .getMember(id)
+                    .subscribe(m => this.member = m);
+            });
     }
 
     isDirty(){

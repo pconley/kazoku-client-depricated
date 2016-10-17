@@ -1,0 +1,8 @@
+
+-- be sure that the urls point to heroku rails (like in members service)
+
+-- change the references in public/index.html to use the bundle version
+
+-- bundle the app (see package.json):  npm run bundle:prod 
+
+-- git it up and push to heroku
