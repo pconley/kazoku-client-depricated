@@ -60,7 +60,7 @@ export class MemberService {
                             // and we also accumulate a full copy in the cache
                             Array.prototype.push.apply(that.membersCache,members);
                             // stop with empty page or failsafe
-                            if( members.length == 0 || page > 10 )
+                            if( members.length == 0 || page > 100 )
                                 observer.complete();
                             else
                                 recursiveFunction();
