@@ -14,7 +14,10 @@ import { CanActivateViaAuthGuard } from './service/auth.guard';
 })
 export class AppComponent {
  
-    constructor(private auth: AuthService, private summaryService: SummaryService) {
+    constructor(
+        private auth: AuthService, 
+        private summaryService: SummaryService
+    ) {
         // note that auth.authenticated() is used in the main view
         // so auth needs to be imported here
 

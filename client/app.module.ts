@@ -17,6 +17,7 @@ import { ProfileModule } from "./profile/profile.module";
 import { CanActivateViaAuthGuard } from "./service/auth.guard"
 
 import { AuthService } from "./service/auth.service"
+import { EventService } from "./service/event.service"
 import { MemberService } from "./members/member.service"
 import { ProfileService } from "./profile/profile.service"
 
@@ -30,7 +31,7 @@ import { ProfileService } from "./profile/profile.service"
         routing
     ],
     providers: [
-        ProfileService, MemberService, AuthService,
+        ProfileService, MemberService, EventService, AuthService,
         CanActivateViaAuthGuard,
         APP_ROUTER_PROVIDERS,
         provideAuth({

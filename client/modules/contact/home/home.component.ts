@@ -5,5 +5,5 @@ import { Component } from "@angular/core";
     templateUrl: `client/modules/contact/home/home.component.html`
 })
 export class ContactComponent {
-    constructor() {}
+    constructor() { console.log("**** other constructor"); }
 }
