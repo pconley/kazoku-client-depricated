@@ -1,8 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from '@angular/router';
 
-//import { ApiService } from "../service/api.service";
-//import { MemberRoutingModule } from "./member.routing";
+import { AuthService } from "../service/auth.service";
 import { MemberService } from "./member.service";
 import { IMember } from "./member"
 //import { Observable } from 'rxjs/Observable';
@@ -26,9 +25,18 @@ export class MemberListComponent implements OnInit {
     loading: boolean = false;
     members: IMember[] = [];
 
-    constructor(private router: Router, private memberService: MemberService) {}
+    constructor(
+        private router: Router, 
+        private authService: AuthService,
+        private memberService: MemberService
+    ) {
+        console.log("*** MemberListComponent#constructor")
+    }
 
-    ngOnInit(){ this.loader(false); }
+    ngOnInit(){ 
+        console.log("*** MemberListComponent#OnInit")
+        this.loader(false); // do not force re-load of members
+    }
 
     previousMember: IMember = null;
     onSelect(member: IMember): void {
@@ -47,6 +55,7 @@ export class MemberListComponent implements OnInit {
     refresh(){ this.loader(true); }
 
     loader(force: boolean){
+        console.log("--- MemberListComponent#loader force="+force);
         this.members = [];
         this.count = 0; 
         this.loading = true;

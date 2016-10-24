@@ -17,7 +17,7 @@ export class MemberDetailsComponent implements OnInit {
     current_id: number = 0;
     saved_json: string = "";
     is_dirty: boolean = false;
-    member: IMember = {id:0, first_name:'error',last_name:'error',key:'',starRating:0,selected:false,description:''};
+    member: IMember = {id:0, first_name:'',last_name:'Loading...',key:'',starRating:0,selected:false,description:''};
 
     in_init: boolean = false;
 

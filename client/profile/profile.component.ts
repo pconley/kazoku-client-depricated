@@ -5,14 +5,14 @@ import { ProfileService } from './profile.service';
   selector: 'kz-profile',
   templateUrl: "client/profile/profile.component.html"
 })
-export class ProfileComponent {
+export class ProfileComponent implements OnInit {
 
     profile: any = null;
 
-    constructor( private service: ProfileService ) {}
+    constructor( private profileService: ProfileService ) {}
 
     ngOnInit() { 
-        this.profile = this.profile || this.service.load_profile();
+        this.profile = this.profile || this.profileService.load_profile();
     }
 
 }

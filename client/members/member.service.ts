@@ -1,30 +1,32 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
-import { AuthHttp } from "angular2-jwt";
 
 import {Observable} from 'rxjs/Rx';
-//import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/do'
 import 'rxjs/add/observable/of';
 import 'rxjs/add/observable/from';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 
+import { ApiService } from "../service/api.service";
+import { AuthService } from "../service/auth.service";
+
 import { IMember } from './member';
 
 @Injectable()
 export class MemberService {
 
-    private baseUrl = 'https://kazoku-server-2016.herokuapp.com/api/v1/';
-    //private baseUrl = 'http://localhost:3333/api/v1/';
-    private memberUrl = this.baseUrl+'members/'; // add 1.json
-    private membersUrl = this.baseUrl+'members.json';
-
     public membersCache: IMember[] = null;
 
-    constructor(private _http: Http, private _auth: AuthHttp) {}
+    constructor(
+        private apiService: ApiService,
+        private authService: AuthService
+    ) {
+        console.log("*** MemberService#constructor");
+    }
 
     getMembers(force: boolean): Observable<IMember[]> {
+        if( ! this.authService.authenticated() ) return this.authError();
         // if we are not forcing a reload, and there are already
         // members stored in the members cache... then use cache
         if( !force && this.membersCache ){
@@ -36,15 +38,16 @@ export class MemberService {
     }
 
     getMember(id: number): Observable<IMember> {
-        var url = `${this.memberUrl}${id}.json`;
-        console.log("MemberService#getMember2: url="+url);
-        return this._auth.get(url)
-            .map((response: Response) => <IMember> response.json())
-            .do(data => { console.log("MemberService#getMember2: data...",data); })
+        if( ! this.authService.authenticated() ) return this.authError();
+        console.log(`MemberService#getMember: id=${id}`);
+        var action = `members/${id}`;
+        return this.apiService.get(action)
+            .map((obj: any) => <IMember> obj) 
+            //.do(obj => { console.log("MemberService#getMember: obj...",obj); })
             .catch(this.handleError);
     }
 
-    loadPages(): Observable<IMember[]> {
+    private loadPages(): Observable<IMember[]> {
         var page = 0;
         var that = this;
         that.membersCache =  [];
@@ -60,7 +63,7 @@ export class MemberService {
                             // and we also accumulate a full copy in the cache
                             Array.prototype.push.apply(that.membersCache,members);
                             // stop with empty page or failsafe
-                            if( members.length == 0 || page > 100 )
+                            if( members.length == 0 || page > 3 )
                                 observer.complete();
                             else
                                 recursiveFunction();
@@ -76,17 +79,20 @@ export class MemberService {
         });
     }
  
-    loadPage(page: number): Observable<IMember[]> {
-        var url = `${this.membersUrl}?page=${page}`;
-        console.log("MemberService#loadPage: url="+url);
-        return this._auth.get(url)
-            .map((response: Response) => <IMember[]> response.json())
-            //.do(data => { console.log("MemberService#loadPage: count = "+data.length); })
+    private loadPage(page: number): Observable<IMember[]> {
+        console.log("MemberService#loadPage. page="+page);
+        return this.apiService.get("members",{page: page})
+            .map((obj: any) => <IMember[]> obj) 
             .catch(this.handleError);
     }
 
     private handleError(error: Response) {
         console.error("MemberService#handleError: 3956...",error);
-        return Observable.throw('Server error: 3956');
+        return Observable.throw('Server error in MemberService: 3956');
+    }
+
+    private authError() {
+        console.error("MemberService#authError");
+        return Observable.throw('Authentication Error in MemberService');
     }
 }
