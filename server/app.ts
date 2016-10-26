@@ -31,9 +31,6 @@ app.use("/login", loginRouter);
 app.use('/data', express.static(join(__dirname, '../data')));
 app.use('/client', express.static(join(__dirname, '../client')));
 
-app.use('/home', express.static(join(__dirname, '../client/home')));
-
-
 // app.get('/', function (req, res) {
 //   console.log("*** here"); // [ '/adm*n', '/manager' ]
 //   res.send('Admin Homepage');
