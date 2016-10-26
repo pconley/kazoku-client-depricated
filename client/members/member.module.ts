@@ -4,7 +4,7 @@ import { NgSemanticModule } from "ng-semantic";
 import { CommonModule } from "@angular/common";
 import { RouterModule } from '@angular/router';
 
-import { MemberRoutingModule } from './member.routing';
+import { MemberRouting } from './member.routing';
 import { MemberListComponent } from "./member-list.component";
 import { MemberDetailsComponent } from "./member-details.component";
 
@@ -21,12 +21,11 @@ import { CanActivateViaAuthGuard } from '../service/auth.guard'
 
 @NgModule({
     imports: [
-        CommonModule, FormsModule,
+        CommonModule, 
+        FormsModule,
         HttpModule,
-        //SharedModule.forRoot(),
-        //ContactModule,
         NgSemanticModule,
-        MemberRoutingModule
+        MemberRouting
     ],
     providers: [ CanActivateViaAuthGuard ],
     declarations: [ 

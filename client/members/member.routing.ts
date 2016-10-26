@@ -13,8 +13,6 @@ import { CanActivateViaAuthGuard } from '../service/auth.guard';
       { path: 'member/:id', component: MemberDetailsComponent, canActivate: [CanActivateViaAuthGuard] }
     ])
   ],
-  exports: [
-    RouterModule
-  ]
+  exports: [ RouterModule ]
 })
-export class MemberRoutingModule { }
+export class MemberRouting { }
