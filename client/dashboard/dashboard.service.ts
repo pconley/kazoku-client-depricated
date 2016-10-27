@@ -12,6 +12,14 @@ export class DashboardService {
 
     constructor() {}
 
+    getBirthdays(month: number){
+        return [
+            {name: "pat", day: 1},
+            {name: "mike", day: 3},
+            {name: "elaine", day: 9}
+        ];
+    }
+
     // load_profile(){
     //     // the profile was saved to local storage (along with the
     //     // token_id) at the time the user logged into the system

@@ -10,13 +10,11 @@ import { protectedRouter } from "./routes/protected";
 const app: express.Application = express();
 app.disable("x-powered-by");
 
-var myLogger = function (req, res, next) {
-  console.log('LOGGED: '+req.url);
-  next();
-};
-
-app.use(myLogger);
-
+// var myLogger = function (req, res, next) {
+//   console.log('LOGGED: '+req.url);
+//   next();
+// };
+// app.use(myLogger);
 
 app.use(favicon(join(__dirname, "../public", "favicon.ico")));
 app.use(express.static(join(__dirname, '../public')));
@@ -57,14 +55,14 @@ if (app.get("env") === "development") {
 
 // catch 404 and forward to "next" error handler - dev or prod
 app.use(function(req: express.Request, res: express.Response, next) {
-    console.log("app#use catch 404. request...",req.url);
+    //console.log("app#use catch 404. request...",req.url);
     let err = new Error("The Page Not Found");
     next(err);
 });
 
 // production error handler: no stacktrace leaked to user
 app.use(function(err: any, req: express.Request, res: express.Response, next: express.NextFunction) {
-    console.log("app#use prod error. request...",req.url,err);
+    //console.log("app#use prod error. request...",req.url,err);
     res.status(err.status || 500);
     res.json({
         error: {},

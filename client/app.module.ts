@@ -12,6 +12,7 @@ import { ErrorModule }   from "./error/error.module";
 import { ContactModule } from "./modules/contact/contact.module";
 import { MemberModule }  from "./members/member.module";
 import { ProfileModule } from "./profile/profile.module";
+import { DashboardModule } from "./dashboard/dashboard.module";
 
 import { HelloComponent } from "./components/shared/hello.component";
 
@@ -21,15 +22,18 @@ import { AuthService } from "./service/auth.service"
 import { EventService } from "./service/event.service"
 import { MemberService } from "./members/member.service"
 import { ProfileService } from "./profile/profile.service"
+import { DashboardService } from "./dashboard/dashboard.service"
 
 @NgModule({
     imports: [
         BrowserModule, HttpModule, NgSemanticModule,
         ContactModule, MemberModule, ErrorModule, ProfileModule,
+        DashboardModule,
         HomeModule, AppRouting
     ],
     providers: [
         ProfileService, MemberService, EventService, AuthService,
+        DashboardService,
         CanActivateViaAuthGuard,
         provideAuth({
             globalHeaders: [{"Content-type": "application/json"}],
@@ -39,12 +43,8 @@ import { ProfileService } from "./profile/profile.service"
     ],
     declarations: [ HelloComponent, AppComponent ],
     bootstrap:    [ AppComponent ],
-    schemas: [
-        CUSTOM_ELEMENTS_SCHEMA
-    ]
+    schemas:      [ CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class AppModule { 
-
       //constructor(public auth: Auth) {}
-
 }
