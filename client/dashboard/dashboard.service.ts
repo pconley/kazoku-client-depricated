@@ -16,7 +16,9 @@ export class DashboardService {
         return [
             {name: "pat", day: 1},
             {name: "mike", day: 3},
-            {name: "elaine", day: 9}
+            {name: "tim", day: 5},
+            {name: "claire", day: 3},
+            {name: "elaine", day: 13}
         ];
     }
 

@@ -1,6 +1,15 @@
 <sm-segment>
     <h3>Birthdays in {{month}}</h3>
 
-    <p *ngFor='let x of birthdays'>{{x.name}}: {{x.day}}</p>
+    <div class="ui three column grid">
+
+        <div class="column" *ngFor='let x of birthdays'>
+            <div class="ui segment">
+                {{x.name}}: {{x.day}}
+                <img>
+            </div>
+        </div>
+
+    </div>
 
 </sm-segment>
