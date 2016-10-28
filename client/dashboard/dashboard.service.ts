@@ -14,11 +14,13 @@ export class DashboardService {
 
     getBirthdays(month: number){
         return [
-            {name: "pat", day: 1},
-            {name: "mike", day: 3},
-            {name: "tim", day: 5},
-            {name: "claire", day: 3},
-            {name: "elaine", day: 13}
+            {name: "mj", month: month-1, day: 29, date: new Date(2016,10,1)},
+            {name: "pat", month: month, day: 1, date: new Date(2016,10,1)},
+            {name: "mike", month: month, day: 3, date: new Date(2016,10,3)},
+            {name: "tim", month: month, day: 5,  date: new Date(2016,10,5)},
+            {name: "claire", month: month, day: 3, date: new Date(2016,10,3)},
+            {name: "elaine", month: month, day: 20, date: new Date(2016,10,13)},
+            {name: "ted", month: month+1, day: 1, date: new Date(2016,10,13)}
         ];
     }
 

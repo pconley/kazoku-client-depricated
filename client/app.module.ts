@@ -14,7 +14,7 @@ import { MemberModule }  from "./members/member.module";
 import { ProfileModule } from "./profile/profile.module";
 import { DashboardModule } from "./dashboard/dashboard.module";
 
-import { HelloComponent } from "./components/shared/hello.component";
+import { HelloComponent } from "./components/hello.component";
 
 import { CanActivateViaAuthGuard } from "./service/auth.guard"
 

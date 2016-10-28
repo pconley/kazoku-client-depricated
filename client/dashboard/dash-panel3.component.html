@@ -3,17 +3,13 @@
     <h3>Calender View for {{month}}</h3>
 
     <div class="ui seven column grid">
-        <!-- the calendar header-->
-        <div class="column"><div class="ui segment">Sunday</div></div>
-        <div class="column"><div class="ui segment">Monday</div></div>
-        <div class="column"><div class="ui segment">Tuesday</div></div>
-        <div class="column"><div class="ui segment">Wedsday</div></div>
-        <div class="column"><div class="ui segment">Thursday</div></div>
-        <div class="column"><div class="ui segment">Friday</div></div>
-        <div class="column"><div class="ui segment">Satday</div></div>
+        <!-- the calendar header -->
+        <div class="column" *ngFor='let hdr of hdrs'>
+            <kz-cal-hdr>{{hdr}}</kz-cal-hdr>
+        </div>
         <!-- the actual days-->
         <div class="column" *ngFor='let d of days'>
-            <div  class="ui segment">{{d.day}} {{d.name}}</div>
+            <kz-cal-day [title]='d.day' [lines]='d.names'></kz-cal-day>
         </div>
     </div>
 </sm-segment>
