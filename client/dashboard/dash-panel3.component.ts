@@ -15,6 +15,7 @@ export class DashPanelThreeComponent implements OnInit {
 
     month: string = "error";
     days: any[] = [];
+    weeks: any[] = [];
     hdrs: string[] = ["Sunday","Montag","Tue","Weds","Thor's Day","Frietag","Saturn"]
     birthdays: any[] = [];
 
@@ -28,12 +29,24 @@ export class DashPanelThreeComponent implements OnInit {
         this.birthdays = this.dashboardService.getBirthdays(today.getMonth());
 
         this.days = [];
+        this.weeks = [];
+
+        let week = [];
         let view_days = this.getMonthViewDays(today);
         //console.log("view days...",view_days);
+        let count: number = 1;
         for( let day of this.getMonthViewDays(today) ){
             let names = this.getNames(this.birthdays,day);
             let text = names.join("; ");
-            this.days.push({day: day.getDate(), name: text, names: names} );
+            let obj = {day: day.getDate(), name: text, names: names};
+            this.days.push( obj );
+            week.push( obj );
+            if( count == 7 ){
+                this.weeks.push( week );
+                week = [];
+                count = 0;
+            }
+            count++;
         }
     }
 
